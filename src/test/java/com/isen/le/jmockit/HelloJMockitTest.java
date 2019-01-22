@@ -18,7 +18,7 @@ public class HelloJMockitTest {
      */
     @Test
     public void testSayHelloAtChina() {
-        System.out.println(System.getProperty("java.class.path"));
+//        System.out.println(System.getProperty("java.class.path"));
         // 假设当前位置是在中国
         new Expectations(Locale.class) {
             {
