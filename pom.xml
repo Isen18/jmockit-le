@@ -11,6 +11,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <spring.version>5.1.4.RELEASE</spring.version>
     </properties>
 
     <dependencies>
@@ -18,7 +19,8 @@
         <dependency>
             <groupId>org.jmockit</groupId>
             <artifactId>jmockit</artifactId>
-            <version>1.44</version>
+            <!--<version>1.44</version>-->
+            <version>1.36</version>
             <scope>test</scope>
         </dependency>
 
@@ -29,12 +31,56 @@
             <scope>test</scope>
         </dependency>
 
+        <!--servlet-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
+
+        <!--spring-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-tx</artifactId>-->
+            <!--<version>${spring.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-beans</artifactId>-->
+            <!--<version>${spring.version}</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--dubbo-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>2.6.5</version>
+        </dependency>
+
+        <!--rocketmq-->
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+            <version>4.3.2</version>
+        </dependency>
+
     </dependencies>
 
     <!-- -javaagent:D:\apache-maven-3.6.0-bin\repository\org\jmockit\jmockit\1.44\jmockit-1.44.jar-->
@@ -46,8 +92,13 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.4.3</version>
                 <configuration>
-                    <argLine>-javaagent:${settings.localRepository}/org/jmockit/jmockit/1.44/jmockit-1.44.jar</argLine>
+                    <argLine>-javaagent:${settings.localRepository}/org/jmockit/jmockit/1.36/jmockit-1.36.jar</argLine>
+                    <!--<argLine>-javaagent:${settings.localRepository}/org/jmockit/jmockit/1.44/jmockit-1.44.jar</argLine>-->
                     <useSystemClassLoader>true</useSystemClassLoader>
+
+                    <!--代码覆盖率-->
+                    <disableXmlReport>true</disableXmlReport>
+                    <argLine>-Dcoverage-metrics=all</argLine>
                 </configuration>
             </plugin>
             <!--<plugin>-->
