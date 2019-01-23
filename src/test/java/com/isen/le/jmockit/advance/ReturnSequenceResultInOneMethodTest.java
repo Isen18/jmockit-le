@@ -18,6 +18,7 @@ import org.junit.Test;
 public class ReturnSequenceResultInOneMethodTest {
     // 一个类所有实例的某个方法，返回时序结果。
     // 适用场景：每次调用，期望返回的数据不一样。比如从tcp数据流中拿数据
+    AnOrdinaryClass instance1;
     @Test
     public void testIfMethodOfClass() {
         AnOrdinaryClass instance = new AnOrdinaryClass();
@@ -28,15 +29,22 @@ public class ReturnSequenceResultInOneMethodTest {
                 result = new int[] { 1, 2, 3, 4, 5 };
             }
         };
-        AnOrdinaryClass instance1 = new AnOrdinaryClass();
-        Assert.assertTrue(instance1.ordinaryMethod() == 1);
-        Assert.assertTrue(instance1.ordinaryMethod() == 2);
-        Assert.assertTrue(instance1.ordinaryMethod() == 3);
-        Assert.assertTrue(instance1.ordinaryMethod() == 4);
-        Assert.assertTrue(instance1.ordinaryMethod() == 5);
-        // 因为在上面录制脚本中，只录制了5个结果，当大于5时，就以最后一次结果为准
-        Assert.assertTrue(instance1.ordinaryMethod() == 5);
-        Assert.assertTrue(instance1.ordinaryMethod() == 5);
+        instance1 = new AnOrdinaryClass();
+        System.out.println(instance1.ordinaryMethod());
+//        Assert.assertTrue(instance1.ordinaryMethod() == 1);
+//        Assert.assertTrue(instance1.ordinaryMethod() == 2);
+//        Assert.assertTrue(instance1.ordinaryMethod() == 3);
+//        Assert.assertTrue(instance1.ordinaryMethod() == 4);
+//        Assert.assertTrue(instance1.ordinaryMethod() == 5);
+//        // 因为在上面录制脚本中，只录制了5个结果，当大于5时，就以最后一次结果为准
+//        Assert.assertTrue(instance1.ordinaryMethod() == 5);
+//        Assert.assertTrue(instance1.ordinaryMethod() == 5);
+        test();
+    }
+
+//    @Test
+    public void test(){
+        System.out.println(instance1.ordinaryMethod());
     }
 
     // 与上述不一样的地方，仅仅是对某一个实例的返回值进行录制

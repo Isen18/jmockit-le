@@ -1,6 +1,8 @@
 package com.isen.le.jmockit.dubbo;
 
 import com.isen.le.jmockit.MailService;
+import com.isen.le.jmockit.MailServiceController;
+import com.isen.le.jmockit.MailServiceControllerInter;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Resource;
@@ -45,12 +47,15 @@ public class DubboConsumerBeanMockingTest {
 
     // 现在你使用的dubbo消费bean就是本地mock过的了，并不是指向远程dubbo服务的bean了
     @Resource
-    MailService mailService;
+//    MailService mailService;
+    MailServiceControllerInter mailServiceControllerInter;
 
     @Test
     public void testSendMail() {
         long userId = 123456;
         String content = "test mail content";
-        Assert.assertTrue(mailService.sendMail(userId, content));
+//        Assert.assertTrue(mailService.sendMail(userId, content));
+        Assert.assertTrue(mailServiceControllerInter.sendMail(userId, content));
+
     }
 }
